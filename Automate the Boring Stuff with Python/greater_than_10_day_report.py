@@ -30,7 +30,6 @@ ws.title = "Greater Than 10 Days Report"
 def get_greater_than_10_days_report():
 	try:
 		con = pymysql.connect(MROCONFIG.CONFIG['DB']['host'], MROCONFIG.CONFIG['DB']['username'], MROCONFIG.CONFIG['DB']['password'], MROCONFIG.CONFIG['DB']['database'])
-		#con = pymysql.connect(host='192.168.1.206', user='jerrym', password='usmro1', db='uservices')
 		cur = con.cursor()
 		print('connection successful')
 
@@ -39,7 +38,6 @@ def get_greater_than_10_days_report():
 		header = ['Days Since Collection', 'LabResult_SpecimenID', 'Status', 'Lab Result', 'Employee ID', 'Employee Name', 'Company', 'Division', 'Collection Date', 'Date First Reported', 'Rx Received Date']
 		c = 1
 		for i in header:
-			#ws.cell(1, c, value=i)
 			ws.cell(row=1, column=c).value = i
 			c += 1
 
@@ -105,5 +103,4 @@ def sendMail(to, subject, text, files=[],server="192.168.1.150"):
 
 if __name__ == "__main__":
 	_file_name = get_greater_than_10_days_report()
-	# [Send report email to uServices]:
-	sendMail(["email@gmail.com"], "Greater Than 10 Days Report", "Attached Excel sheet lists the lab results that have been pending for more than 10 days.", [_file_name])
+	sendMail(["email@email.com"], "Report", "Attached Excel sheet lists the information that has been pending for more than 10 days.", [_file_name])
