@@ -71,9 +71,6 @@ def get_greater_than_10_days_report():
 			r += 1
 		
 		wb.save('report.xls')
-		# Use the below examples to copy the workbook into an archive
-		#shutil.copy(os.path.join(PSY_DIR, file_name), LAB_DIR)
-        #shutil.copy(os.path.join(PSY_DIR, file_name), XML_DIR)
 
 		if con:
 			con.close()
@@ -109,5 +106,4 @@ def sendMail(to, subject, text, files=[],server="192.168.1.150"):
 if __name__ == "__main__":
 	_file_name = get_greater_than_10_days_report()
 	# [Send report email to uServices]:
-	#sendMail(["LCarr@uservices.com", "breid@uservices.com"],
-	sendMail(["kristyna.lewison@disa.com"], "Greater Than 10 Days Report", "Attached Excel sheet lists the lab results that have been pending for more than 10 days.", [_file_name])
+	sendMail(["email@gmail.com"], "Greater Than 10 Days Report", "Attached Excel sheet lists the lab results that have been pending for more than 10 days.", [_file_name])
